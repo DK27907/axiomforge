@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { TopNav } from "@/components/layout/TopNav";
 import { Footer } from "@/components/layout/Footer";
 import { ContextualAssistant } from "@/components/assistant/ContextualAssistant";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +53,7 @@ export default function RootLayout({
         <main className="pt-16">{children}</main>
         <Footer />
         <ContextualAssistant />
+        <WhatsAppButton />
       </body>
     </html>
   );

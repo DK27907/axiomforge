@@ -14,18 +14,18 @@ const FOOTER_COLUMNS = [
     title: "Platform",
     links: [
       { href: "/pricing", label: "Transparent Pricing" },
-      { href: "/simulator", label: "Live Simulator" },
-      { href: "/api", label: "API Reference" },
+      { href: "/#simulator", label: "Live Simulator" },
+      { href: "/faqs", label: "FAQs" },
       { href: "https://app.axiomforge.co.ke", label: "Client Login" },
     ],
   },
   {
     title: "Compliance",
     links: [
-      { href: "/compliance/odpc", label: "ODPC Registration" },
-      { href: "/compliance/hipaa", label: "HIPAA Alignment" },
-      { href: "/compliance/ferpa", label: "FERPA Certification" },
-      { href: "/compliance/soc2", label: "SOC 2 Type II" },
+      { href: "/security-architecture#odpc", label: "ODPC Registration" },
+      { href: "/security-architecture#hipaa", label: "HIPAA Alignment" },
+      { href: "/security-architecture#ferpa", label: "FERPA Certification" },
+      { href: "/security-architecture#soc2", label: "SOC 2 Type II" },
     ],
   },
   {
@@ -33,8 +33,8 @@ const FOOTER_COLUMNS = [
     links: [
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
-      { href: "/careers", label: "Careers" },
-      { href: "/legal/privacy", label: "Privacy" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/security-architecture", label: "Security" },
     ],
   },
 ];
@@ -43,9 +43,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[#1F2533] bg-[#0A0D14] relative">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        {/* Top section — brand + columns */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
-          {/* Brand block */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 rounded border border-[#1F2533] bg-[#0F131C] flex items-center justify-center">
@@ -56,17 +54,33 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-[#8B94A7] leading-relaxed max-w-xs">
-              Autonomous AI systems with absolute data isolation. Built in Nairobi for Kenyan infrastructure.
+              Autonomous AI systems with absolute data isolation. Built in
+              Nairobi for Kenyan infrastructure.
             </p>
 
-            {/* Location badge */}
             <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mt-6 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] shadow-[0_0_6px_rgba(0,245,160,0.8)]" />
               Nairobi, Kenya
             </div>
+
+            <div className="mt-4 space-y-1.5">
+              <a
+                href="mailto:info@axiomforge.co.ke"
+                className="block text-xs text-[#8B94A7] hover:text-[#F5F7FA] transition-colors"
+              >
+                info@axiomforge.co.ke
+              </a>
+              <a
+                href="https://wa.me/254748249882"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-xs text-[#8B94A7] hover:text-[#F5F7FA] transition-colors"
+              >
+                WhatsApp +254 748 249 882
+              </a>
+            </div>
           </div>
 
-          {/* Link columns */}
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
               <h4 className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-4">
@@ -88,47 +102,48 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Trust strip */}
         <div className="mt-14 pt-8 border-t border-[#1F2533] flex flex-wrap items-center gap-x-6 gap-y-3">
           <span className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468]">
             Certified:
           </span>
-          {["ODPC Registered (Kenya)", "SOC 2 Type II", "HIPAA Compliant", "FERPA Certified"].map(
-            (label) => (
-              <span
-                key={label}
-                className="text-xs text-[#8B94A7] flex items-center gap-1.5"
-              >
-                <span className="w-1 h-1 rounded-full bg-[#00F5A0]" />
-                {label}
-              </span>
-            ),
-          )}
+          {[
+            "ODPC Registered (Kenya)",
+            "SOC 2 Type II",
+            "HIPAA Compliant",
+            "FERPA Certified",
+          ].map((label) => (
+            <span
+              key={label}
+              className="text-xs text-[#8B94A7] flex items-center gap-1.5"
+            >
+              <span className="w-1 h-1 rounded-full bg-[#00F5A0]" />
+              {label}
+            </span>
+          ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-8 pt-6 border-t border-[#1F2533] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468]">
             © {new Date().getFullYear()} AxiomForge Ltd · All rights reserved
           </div>
           <div className="flex items-center gap-5">
             <Link
-              href="/legal/terms"
+              href="/faqs"
               className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
             >
-              Terms
+              FAQs
             </Link>
             <Link
-              href="/legal/privacy"
+              href="/security-architecture"
               className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
             >
-              Privacy
+              Security
             </Link>
             <Link
-              href="/legal/dpa"
+              href="/contact"
               className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
             >
-              Data Processing Agreement
+              Contact
             </Link>
           </div>
         </div>

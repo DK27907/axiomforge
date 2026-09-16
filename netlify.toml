@@ -1,0 +1,54 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Official Next.js plugin — enables SSR, ISR, API routes, image optimization
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Security headers on every response
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Immutable caching for build assets
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Immutable caching for images
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Convenience redirects
+[[redirects]]
+  from = "/simulator"
+  to = "/#simulator"
+  status = 301
+
+[[redirects]]
+  from = "/vault"
+  to = "/security-architecture"
+  status = 301
+
+[[redirects]]
+  from = "/arch"
+  to = "/security-architecture"
+  status = 301
+
+[[redirects]]
+  from = "/docs"
+  to = "/faqs"
+  status = 301
