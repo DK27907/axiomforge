@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { TopNav } from "@/components/layout/TopNav";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,7 +46,11 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-void">
+        <TopNav />
+        <main className="pt-16">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
