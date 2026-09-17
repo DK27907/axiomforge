@@ -61,7 +61,7 @@ export function TopNav() {
                 : "0 1px 2px rgba(11,17,32,0.03), 0 4px 16px rgba(11,17,32,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
-            {/* Logo + Wordmark — visible on ALL screen sizes */}
+            {/* Logo + Wordmark — visible on all screen sizes */}
             <Link
               href="/"
               className="flex items-center gap-2.5 group shrink-0 pl-1 min-w-0"
@@ -77,10 +77,12 @@ export function TopNav() {
               />
 
               <div className="flex flex-col leading-none min-w-0">
-                <span className="font-semibold text-[15px] tracking-tight text-slate-900 truncate">
+                {/* Company name — LARGER on mobile (17px) and desktop (16px) */}
+                <span className="font-bold text-[17px] sm:text-[15px] tracking-tight text-slate-900 truncate">
                   Axiom<span className="text-[#0E7490]">Forge</span>
                 </span>
-                <span className="terminal-font text-[8px] tracking-[0.28em] text-slate-400 uppercase mt-1 truncate">
+                {/* Tagline — LARGER on mobile (9px) and desktop (8px) */}
+                <span className="terminal-font text-[9px] sm:text-[8px] tracking-[0.22em] text-slate-500 uppercase mt-1 truncate font-medium">
                   Digital Solutions
                 </span>
               </div>
