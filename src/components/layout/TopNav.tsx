@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
@@ -22,7 +23,6 @@ export function TopNav() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 20);
-    // Hide on scroll down, reveal on scroll up
     if (latest > previous && latest > 120) {
       setHidden(true);
       setSolutionsOpen(false);
@@ -31,7 +31,6 @@ export function TopNav() {
     }
   });
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -52,21 +51,36 @@ export function TopNav() {
         }`}
       >
         <nav className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-          {/* Logo / Wordmark */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-7 h-7 rounded border border-[#1F2533] bg-[#0F131C] flex items-center justify-center group-hover:border-[#06B6D4]/50 transition-colors">
-                <div className="w-2 h-2 bg-[#06B6D4] rounded-sm shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
-              </div>
+          {/* Logo + Wordmark */}
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            {/* Logo image with white-to-transparent blend */}
+            <div
+              className="relative w-9 h-9 shrink-0"
+              style={{ mixBlendMode: "screen" }}
+            >
+              <Image
+                src="/axiomforge-logo.png"
+                alt="AxiomForge"
+                width={36}
+                height={36}
+                priority
+                className="object-contain"
+              />
             </div>
-            <span className="font-semibold text-[15px] tracking-tight text-[#F5F7FA]">
-              Axiom<span className="text-[#8B94A7]">Forge</span>
-            </span>
+
+            {/* Wordmark */}
+            <div className="hidden sm:flex flex-col leading-none">
+              <span className="font-semibold text-[15px] tracking-tight text-[#F5F7FA]">
+                Axiom<span className="text-[#06B6D4]">Forge</span>
+              </span>
+              <span className="terminal-font text-[8px] tracking-[0.25em] text-[#4B5468] uppercase mt-0.5">
+                Digital Solutions
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
-            {/* Solutions dropdown trigger */}
             <div
               className="relative"
               onMouseEnter={() => setSolutionsOpen(true)}
@@ -88,7 +102,6 @@ export function TopNav() {
               <SolutionsDropdown isOpen={solutionsOpen} />
             </div>
 
-            {/* Other links */}
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -120,7 +133,7 @@ export function TopNav() {
             </Link>
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <button
             className="md:hidden p-2 text-[#F5F7FA]"
             onClick={() => setMobileOpen((v) => !v)}
@@ -131,10 +144,38 @@ export function TopNav() {
         </nav>
       </motion.header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-[#0A0D14] pt-16 md:hidden">
           <div className="px-6 py-6 flex flex-col gap-1">
+            {/* Mobile logo */}
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2.5 mb-6 pb-6 border-b border-[#1F2533]"
+            >
+              <div
+                className="relative w-10 h-10"
+                style={{ mixBlendMode: "screen" }}
+              >
+                <Image
+                  src="/axiomforge-logo.png"
+                  alt="AxiomForge"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-semibold text-base tracking-tight text-[#F5F7FA]">
+                  Axiom<span className="text-[#06B6D4]">Forge</span>
+                </span>
+                <span className="terminal-font text-[9px] tracking-[0.25em] text-[#4B5468] uppercase mt-1">
+                  Digital Solutions
+                </span>
+              </div>
+            </Link>
+
             {[
               { href: "/solutions/healthcare", label: "Healthcare", accent: "#00F5A0" },
               { href: "/solutions/education", label: "Education", accent: "#2563EB" },

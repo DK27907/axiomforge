@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { SolutionHero } from "@/components/solutions/SolutionHero";
+import { SectorInfoPanel } from "@/components/solutions/SectorInfoPanel";
 import { BeforeAfterCard } from "@/components/solutions/BeforeAfterCard";
 import { SystemShowcase } from "@/components/solutions/SystemShowcase";
 import { MetricsStrip } from "@/components/solutions/MetricsStrip";
@@ -9,7 +10,7 @@ import { getSolution } from "@/lib/solutions-data";
 export const metadata = {
   title: "Enterprise AI — Autonomous Corporate Agents | AxiomForge",
   description:
-    "Eliminate system friction. Internal knowledge graphs, API-connected support agents, custom workflow orchestration. Deployed in isolated containers.",
+    "Eliminate system friction. Internal knowledge graphs, API-connected support agents, custom workflow orchestration.",
 };
 
 export default function EnterprisePage() {
@@ -17,6 +18,7 @@ export default function EnterprisePage() {
   return (
     <PageShell>
       <SolutionHero data={data} />
+      <SectorInfoPanel data={data} />
       <BeforeAfterCard data={data} />
       <SystemShowcase data={data} />
       <MetricsStrip data={data} />

@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { SolutionHero } from "@/components/solutions/SolutionHero";
+import { SectorInfoPanel } from "@/components/solutions/SectorInfoPanel";
 import { BeforeAfterCard } from "@/components/solutions/BeforeAfterCard";
 import { SystemShowcase } from "@/components/solutions/SystemShowcase";
 import { MetricsStrip } from "@/components/solutions/MetricsStrip";
@@ -17,6 +18,7 @@ export default function EducationPage() {
   return (
     <PageShell>
       <SolutionHero data={data} />
+      <SectorInfoPanel data={data} />
       <BeforeAfterCard data={data} />
       <SystemShowcase data={data} />
       <MetricsStrip data={data} />

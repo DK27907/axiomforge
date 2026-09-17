@@ -28,6 +28,40 @@ export function PricingEngine() {
 
   return (
     <section className="relative py-24 px-6 overflow-hidden">
+      {/* Full-color data viz background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url(/images/pricing-data.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.20,
+          filter: "saturate(1.4) contrast(1.1) brightness(0.85)",
+        }}
+      />
+
+      {/* Deep blue gradient overlay */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,13,20,0.92) 0%, rgba(6,20,35,0.75) 50%, rgba(10,13,20,0.92) 100%)",
+        }}
+      />
+
+      {/* Ambient sector-colored pulse glow */}
+      <motion.div
+        aria-hidden
+        animate={{ opacity: [0.15, 0.30, 0.15] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] rounded-full"
+        style={{
+          background: `radial-gradient(circle, rgba(${cfg.accentRgb}, 0.15) 0%, transparent 55%)`,
+        }}
+      />
+
       {/* Section header */}
       <div className="max-w-4xl mx-auto text-center mb-14 relative z-10">
         <motion.div
@@ -35,7 +69,7 @@ export function PricingEngine() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="terminal-font text-[10px] tracking-[0.3em] uppercase text-[#4B5468] mb-4"
+          className="terminal-font text-[10px] tracking-[0.3em] uppercase text-[#8B94A7] mb-4"
         >
           ◢ Transparent Pricing · No Sales Call
         </motion.div>
@@ -45,11 +79,13 @@ export function PricingEngine() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-5xl font-bold tracking-tight text-[#F5F7FA] mb-4 leading-tight"
+          className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.7)]"
         >
           Pricing You Can Read
           <br />
-          <span className="text-[#8B94A7]">Without Booking A Call.</span>
+          <span className="bg-gradient-to-r from-[#F5F7FA] to-[#8B94A7] bg-clip-text text-transparent">
+            Without Booking A Call.
+          </span>
         </motion.h2>
 
         <motion.p
@@ -57,10 +93,10 @@ export function PricingEngine() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base text-[#8B94A7] max-w-2xl mx-auto leading-relaxed"
+          className="text-base text-[#C7CDD8] max-w-2xl mx-auto leading-relaxed"
         >
           Every competitor hides their matrix. We publish ours in KES and USD.
-          Slide to your scale. That's your price. No asterisks.
+          Slide to your scale. That&apos;s your price. No asterisks.
         </motion.p>
       </div>
 
@@ -70,7 +106,7 @@ export function PricingEngine() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="flex flex-wrap items-center gap-2 justify-center mb-10"
+        className="flex flex-wrap items-center gap-2 justify-center mb-10 relative z-10"
       >
         {SECTOR_ORDER.map((key) => {
           const s = PRICING[key];
@@ -79,15 +115,15 @@ export function PricingEngine() {
             <button
               key={key}
               onClick={() => handleSectorChange(key)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border text-xs terminal-font tracking-widest uppercase transition-all duration-200"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border text-xs terminal-font tracking-widest uppercase transition-all duration-200 backdrop-blur-md"
               style={{
-                borderColor: isActive ? s.accent : "#1F2533",
+                borderColor: isActive ? s.accent : "rgba(255,255,255,0.1)",
                 color: isActive ? s.accent : "#8B94A7",
                 backgroundColor: isActive
-                  ? `rgba(${s.accentRgb}, 0.06)`
-                  : "transparent",
+                  ? `rgba(${s.accentRgb}, 0.12)`
+                  : "rgba(10,13,20,0.6)",
                 boxShadow: isActive
-                  ? `0 0 24px rgba(${s.accentRgb}, 0.15)`
+                  ? `0 0 24px rgba(${s.accentRgb}, 0.25)`
                   : "none",
               }}
             >
@@ -111,28 +147,29 @@ export function PricingEngine() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6"
+        className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 relative z-10"
       >
         {/* Left — slider + includes */}
         <div
-          className="lg:col-span-3 rounded-2xl border bg-[#0F131C]/70 backdrop-blur-sm p-8"
+          className="lg:col-span-3 rounded-2xl border bg-[#0F131C]/85 backdrop-blur-xl p-8"
           style={{
-            borderColor: "#1F2533",
-            boxShadow: `0 0 60px rgba(${cfg.accentRgb}, 0.06)`,
+            borderColor: "rgba(255,255,255,0.08)",
+            boxShadow: `0 0 60px rgba(${cfg.accentRgb}, 0.10), 0 20px 40px rgba(0,0,0,0.4)`,
           }}
         >
           <PricingSlider cfg={cfg} value={unitValue} onChange={setUnitValue} />
 
-          {/* Divider */}
           <div className="h-px bg-[#1F2533] my-8" />
 
-          {/* Includes list */}
           <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-4">
             Every engagement includes:
           </div>
           <ul className="space-y-3">
             {cfg.includes.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm text-[#8B94A7]">
+              <li
+                key={item}
+                className="flex items-start gap-3 text-sm text-[#C7CDD8]"
+              >
                 <Check
                   size={14}
                   className="mt-0.5 shrink-0"
@@ -144,16 +181,15 @@ export function PricingEngine() {
           </ul>
         </div>
 
-        {/* Right — the totals */}
+        {/* Right — totals */}
         <div
-          className="lg:col-span-2 rounded-2xl border p-8 flex flex-col"
+          className="lg:col-span-2 rounded-2xl border p-8 flex flex-col backdrop-blur-xl"
           style={{
-            borderColor: `${cfg.accent}30`,
-            backgroundColor: `rgba(${cfg.accentRgb}, 0.03)`,
-            boxShadow: `0 0 60px rgba(${cfg.accentRgb}, 0.10), inset 0 0 0 1px rgba(${cfg.accentRgb}, 0.15)`,
+            borderColor: `${cfg.accent}40`,
+            backgroundColor: `rgba(${cfg.accentRgb}, 0.06)`,
+            boxShadow: `0 0 60px rgba(${cfg.accentRgb}, 0.15), inset 0 0 0 1px rgba(${cfg.accentRgb}, 0.20), 0 20px 40px rgba(0,0,0,0.4)`,
           }}
         >
-          {/* Base implementation */}
           <div className="mb-7">
             <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-2">
               Base Implementation
@@ -169,7 +205,6 @@ export function PricingEngine() {
             </div>
           </div>
 
-          {/* Monthly */}
           <div className="mb-7">
             <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-2">
               Monthly Operations
@@ -186,10 +221,8 @@ export function PricingEngine() {
             </div>
           </div>
 
-          {/* Divider */}
           <div className="h-px bg-[#1F2533] mb-7" />
 
-          {/* First-year total */}
           <div className="mb-8">
             <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-2">
               First-Year Total
@@ -198,11 +231,11 @@ export function PricingEngine() {
               <AnimatedNumber value={price.firstYearUSD} formatter={formatUSD} />
             </div>
             <div className="text-xs text-[#4B5468] mt-1">
-              <AnimatedNumber value={price.firstYearTotal} formatter={formatKES} /> at KES {129}/USD
+              <AnimatedNumber value={price.firstYearTotal} formatter={formatKES} />{" "}
+              at KES 129/USD
             </div>
           </div>
 
-          {/* CTA */}
           <div className="mt-auto">
             <a
               href="#forge"
@@ -225,9 +258,6 @@ export function PricingEngine() {
   );
 }
 
-/**
- * Numbers that animate smoothly between values.
- */
 function AnimatedNumber({
   value,
   formatter,

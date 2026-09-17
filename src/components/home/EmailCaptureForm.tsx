@@ -25,16 +25,33 @@ export function EmailCaptureForm() {
 
     setState("loading");
 
-    // Simulated submission — replace with real API call in Phase 8
-    await new Promise((r) => setTimeout(r, 1400));
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "homepage-hero",
+        }),
+      });
 
-    setState("success");
-    setMessage("Confirmation sent. Check your inbox.");
-    setTimeout(() => {
-      setState("idle");
-      setEmail("");
-      setMessage("");
-    }, 4000);
+      if (!res.ok) {
+        throw new Error("Submission failed");
+      }
+
+      setState("success");
+      setMessage("Received. We'll be in touch within 6 hours.");
+      setTimeout(() => {
+        setState("idle");
+        setEmail("");
+        setMessage("");
+      }, 5000);
+    } catch (error) {
+      console.error(error);
+      setState("error");
+      setMessage("Something went wrong. Try again.");
+      setTimeout(() => setState("idle"), 3000);
+    }
   }
 
   return (
@@ -104,7 +121,6 @@ export function EmailCaptureForm() {
         </button>
       </div>
 
-      {/* Feedback line */}
       <AnimatePresence>
         {message && (
           <motion.div
@@ -125,7 +141,6 @@ export function EmailCaptureForm() {
         )}
       </AnimatePresence>
 
-      {/* Fine print */}
       <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] text-center mt-4">
         No sales call. No commitment. Immediate sandbox access.
       </div>
