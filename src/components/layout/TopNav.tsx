@@ -48,23 +48,23 @@ export function TopNav() {
       >
         <div className="mx-auto max-w-7xl">
           <div
-            className="relative flex items-center justify-between gap-4 h-16 pl-3 pr-2 rounded-2xl transition-all duration-500"
+            className="relative flex items-center justify-between gap-2 h-16 pl-3 pr-2 rounded-2xl transition-all duration-500"
             style={{
               background: scrolled
-                ? "rgba(255, 255, 255, 0.85)"
-                : "rgba(255, 255, 255, 0.55)",
+                ? "rgba(255, 255, 255, 0.9)"
+                : "rgba(255, 255, 255, 0.7)",
               backdropFilter: "blur(24px) saturate(160%)",
               WebkitBackdropFilter: "blur(24px) saturate(160%)",
-              border: "1px solid rgba(255, 255, 255, 0.7)",
+              border: "1px solid rgba(255, 255, 255, 0.75)",
               boxShadow: scrolled
                 ? "0 1px 2px rgba(11,17,32,0.05), 0 8px 24px rgba(11,17,32,0.08), 0 24px 48px rgba(11,17,32,0.06), inset 0 1px 0 rgba(255,255,255,0.9)"
                 : "0 1px 2px rgba(11,17,32,0.03), 0 4px 16px rgba(11,17,32,0.05), inset 0 1px 0 rgba(255,255,255,0.8)",
             }}
           >
-            {/* Logo */}
+            {/* Logo + Wordmark — visible on ALL screen sizes */}
             <Link
               href="/"
-              className="flex items-center gap-3 group shrink-0 pl-1"
+              className="flex items-center gap-2.5 group shrink-0 pl-1 min-w-0"
             >
               <Image
                 src="/axiomforge-logo.png"
@@ -76,11 +76,11 @@ export function TopNav() {
                 style={{ width: "auto", height: "auto", maxWidth: 44, maxHeight: 44 }}
               />
 
-              <div className="hidden sm:flex flex-col leading-none">
-                <span className="font-semibold text-[15px] tracking-tight text-slate-900">
+              <div className="flex flex-col leading-none min-w-0">
+                <span className="font-semibold text-[15px] tracking-tight text-slate-900 truncate">
                   Axiom<span className="text-[#0E7490]">Forge</span>
                 </span>
-                <span className="terminal-font text-[8px] tracking-[0.28em] text-slate-400 uppercase mt-1">
+                <span className="terminal-font text-[8px] tracking-[0.28em] text-slate-400 uppercase mt-1 truncate">
                   Digital Solutions
                 </span>
               </div>
@@ -122,7 +122,7 @@ export function TopNav() {
               ))}
             </div>
 
-            {/* Right actions */}
+            {/* Desktop Right Actions */}
             <div className="hidden md:flex items-center gap-1.5">
               <Link
                 href="https://app.axiomforge.co.ke"
@@ -165,11 +165,11 @@ export function TopNav() {
 
             {/* Mobile toggle */}
             <button
-              className="md:hidden p-2 rounded-lg text-slate-900 hover:bg-slate-100/60 transition-colors"
+              className="md:hidden p-2 rounded-lg text-slate-900 hover:bg-slate-100/60 transition-colors shrink-0"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
