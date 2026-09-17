@@ -13,8 +13,8 @@ export const PERSONAS: Record<string, Persona> = {
     role: "Central Hub",
     greeting:
       "Welcome. I can walk you through any vertical — healthcare, education, or enterprise. Which sector interests you?",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
     suggestions: [
       "How does AxiomForge isolate my data?",
       "What's the pricing for a 300-bed hospital?",
@@ -26,8 +26,8 @@ export const PERSONAS: Record<string, Persona> = {
     role: "Healthcare Command",
     greeting:
       "Hello. I am your ODPC & HIPAA guide. Ask me how we isolate PHI, or about our clinical scribe deployment timelines.",
-    accent: "#00F5A0",
-    accentRgb: "0,245,160",
+    accent: "#047857",
+    accentRgb: "4,120,87",
     suggestions: [
       "How do you handle patient consent?",
       "Can it write clinical notes in Swahili?",
@@ -39,8 +39,8 @@ export const PERSONAS: Record<string, Persona> = {
     role: "Academic Scale",
     greeting:
       "Karibu. I can help you understand FERPA alignment, admissions automation, or how our syllabus-locked agents avoid hallucination.",
-    accent: "#2563EB",
-    accentRgb: "37,99,235",
+    accent: "#1E40AF",
+    accentRgb: "30,64,175",
     suggestions: [
       "How does the syllabus-locking work?",
       "Can it process KCSE certificate verification?",
@@ -52,8 +52,8 @@ export const PERSONAS: Record<string, Persona> = {
     role: "Enterprise Engine",
     greeting:
       "Ready to eliminate system friction. Ask me about Slack/Notion integration, API action agents, or custom workflow deployment.",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
     suggestions: [
       "Can it act on Stripe or Shopify APIs?",
       "How does internal knowledge search work?",
@@ -65,8 +65,8 @@ export const PERSONAS: Record<string, Persona> = {
     role: "Architecture Vault",
     greeting:
       "I speak the language of SOC 2, ODPC, and container isolation. Ask me the hard questions about tenant data boundaries.",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
     suggestions: [
       "Prove that tenants can't see each other's data.",
       "Where are your servers physically located?",

@@ -41,32 +41,54 @@ const FOOTER_COLUMNS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#1F2533] bg-[#0A0D14] relative">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+    <footer className="relative bg-[#0B1120] overflow-hidden border-t border-white/5">
+      {/* Subtle grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.15] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(148,163,184,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.4) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      {/* Cyan radial glow at top */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-64"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(14,116,144,0.20), transparent 70%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
+          {/* Brand block */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded border border-[#1F2533] bg-[#0F131C] flex items-center justify-center">
-                <div className="w-2 h-2 bg-[#06B6D4] rounded-sm shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+              <div className="w-7 h-7 rounded border border-white/15 bg-white/5 flex items-center justify-center">
+                <div className="w-2 h-2 bg-[#67E8F9] rounded-sm shadow-[0_0_8px_rgba(103,232,249,0.8)]" />
               </div>
-              <span className="font-semibold text-[15px] tracking-tight text-[#F5F7FA]">
-                Axiom<span className="text-[#8B94A7]">Forge</span>
+              <span className="font-semibold text-[15px] tracking-tight text-white">
+                Axiom<span className="text-white/60">Forge</span>
               </span>
             </Link>
-            <p className="text-sm text-[#8B94A7] leading-relaxed max-w-xs">
+            <p className="text-sm text-white/70 leading-relaxed max-w-xs">
               Autonomous AI systems with absolute data isolation. Built in
               Nairobi for Kenyan infrastructure.
             </p>
 
-            <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mt-6 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] shadow-[0_0_6px_rgba(0,245,160,0.8)]" />
+            <div className="terminal-font text-[10px] tracking-widest uppercase text-white/50 mt-6 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
               Nairobi, Kenya
             </div>
 
             <div className="mt-4 space-y-1.5">
               <a
                 href="mailto:info@axiomforge.co.ke"
-                className="block text-xs text-[#8B94A7] hover:text-[#F5F7FA] transition-colors"
+                className="block text-xs text-white/70 hover:text-white transition-colors"
               >
                 info@axiomforge.co.ke
               </a>
@@ -74,16 +96,17 @@ export function Footer() {
                 href="https://wa.me/254748249882"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-xs text-[#8B94A7] hover:text-[#F5F7FA] transition-colors"
+                className="block text-xs text-white/70 hover:text-white transition-colors"
               >
                 WhatsApp +254 748 249 882
               </a>
             </div>
           </div>
 
+          {/* Link columns */}
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.title}>
-              <h4 className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] mb-4">
+              <h4 className="terminal-font text-[10px] tracking-widest uppercase text-white/40 mb-4">
                 {col.title}
               </h4>
               <ul className="space-y-2.5">
@@ -91,7 +114,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[#8B94A7] hover:text-[#F5F7FA] transition-colors"
+                      className="text-sm text-white/70 hover:text-white transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -102,8 +125,9 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 pt-8 border-t border-[#1F2533] flex flex-wrap items-center gap-x-6 gap-y-3">
-          <span className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468]">
+        {/* Trust strip */}
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <span className="terminal-font text-[10px] tracking-widest uppercase text-white/40">
             Certified:
           </span>
           {[
@@ -114,34 +138,35 @@ export function Footer() {
           ].map((label) => (
             <span
               key={label}
-              className="text-xs text-[#8B94A7] flex items-center gap-1.5"
+              className="text-xs text-white/75 flex items-center gap-1.5"
             >
-              <span className="w-1 h-1 rounded-full bg-[#00F5A0]" />
+              <span className="w-1 h-1 rounded-full bg-[#34D399]" />
               {label}
             </span>
           ))}
         </div>
 
-        <div className="mt-8 pt-6 border-t border-[#1F2533] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468]">
+        {/* Bottom bar */}
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="terminal-font text-[10px] tracking-widest uppercase text-white/40">
             © {new Date().getFullYear()} AxiomForge Ltd · All rights reserved
           </div>
           <div className="flex items-center gap-5">
             <Link
               href="/faqs"
-              className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
+              className="text-xs text-white/50 hover:text-white transition-colors"
             >
               FAQs
             </Link>
             <Link
               href="/security-architecture"
-              className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
+              className="text-xs text-white/50 hover:text-white transition-colors"
             >
               Security
             </Link>
             <Link
               href="/contact"
-              className="text-xs text-[#4B5468] hover:text-[#8B94A7] transition-colors"
+              className="text-xs text-white/50 hover:text-white transition-colors"
             >
               Contact
             </Link>

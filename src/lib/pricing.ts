@@ -1,6 +1,6 @@
 export type Sector = "healthcare" | "education" | "enterprise";
 
-export const USD_RATE = 129; // 1 USD = 129 KES (fixed for transparency)
+export const USD_RATE = 129;
 
 export interface SectorPricing {
   key: Sector;
@@ -8,19 +8,16 @@ export interface SectorPricing {
   accent: string;
   accentRgb: string;
 
-  // Slider configuration
   min: number;
   max: number;
   step: number;
   defaultValue: number;
-  unit: string;             // "active beds" / "enrolled students" / "monthly API calls"
+  unit: string;
 
-  // Base costs (KES)
-  implementationBase: number;   // one-time
-  monthlyBase: number;          // monthly retainer
-  perUnitMonthly: number;       // KES per unit per month
+  implementationBase: number;
+  monthlyBase: number;
+  perUnitMonthly: number;
 
-  // What's included
   includes: string[];
 }
 
@@ -28,8 +25,8 @@ export const PRICING: Record<Sector, SectorPricing> = {
   healthcare: {
     key: "healthcare",
     label: "Healthcare",
-    accent: "#00F5A0",
-    accentRgb: "0,245,160",
+    accent: "#047857",
+    accentRgb: "4,120,87",
     min: 10,
     max: 800,
     step: 10,
@@ -50,8 +47,8 @@ export const PRICING: Record<Sector, SectorPricing> = {
   education: {
     key: "education",
     label: "Education",
-    accent: "#2563EB",
-    accentRgb: "37,99,235",
+    accent: "#1E40AF",
+    accentRgb: "30,64,175",
     min: 100,
     max: 25_000,
     step: 100,
@@ -72,8 +69,8 @@ export const PRICING: Record<Sector, SectorPricing> = {
   enterprise: {
     key: "enterprise",
     label: "Enterprise",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
     min: 50_000,
     max: 5_000_000,
     step: 50_000,
@@ -94,9 +91,9 @@ export const PRICING: Record<Sector, SectorPricing> = {
 };
 
 export interface PriceBreakdown {
-  implementation: number;    // KES, one-time
-  monthly: number;           // KES
-  firstYearTotal: number;    // KES
+  implementation: number;
+  monthly: number;
+  firstYearTotal: number;
   firstYearUSD: number;
   unitValue: number;
   unitLabel: string;
@@ -116,7 +113,6 @@ export function computePrice(sector: Sector, unitValue: number): PriceBreakdown 
   };
 }
 
-// Utility: format KES with thousand separators
 export function formatKES(n: number): string {
   return `KES ${Math.round(n).toLocaleString("en-KE")}`;
 }

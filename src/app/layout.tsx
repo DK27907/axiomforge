@@ -47,10 +47,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrains.variable}`}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
     >
       <body className="antialiased bg-void">
         <TopNav />
-        <main className="pt-16">{children}</main>
+        <main className="pt-20">{children}</main>
         <Footer />
         <ContextualAssistant />
         <WhatsAppButton />

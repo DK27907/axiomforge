@@ -14,11 +14,19 @@ const SECTOR_BG: Record<string, string> = {
   enterprise: "/images/enterprise-office.jpg",
 };
 
+const SECTOR_TINT: Record<string, string> = {
+  healthcare: "rgba(4, 120, 87, 0.55)",
+  education: "rgba(30, 64, 175, 0.55)",
+  enterprise: "rgba(14, 116, 144, 0.55)",
+};
+
 export function SolutionHero({ data }: SolutionHeroProps) {
   const bgImage = SECTOR_BG[data.key] ?? "/images/hero-datacenter.jpg";
+  const tint = SECTOR_TINT[data.key] ?? "rgba(15, 23, 42, 0.55)";
 
   return (
     <section className="relative min-h-[85vh] flex items-center px-6 py-24 overflow-hidden">
+      {/* FULL-CLARITY image */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -26,44 +34,38 @@ export function SolutionHero({ data }: SolutionHeroProps) {
           backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.40,
-          filter: "saturate(1.3) contrast(1.1) brightness(0.85)",
+          opacity: 1,
+          filter: "brightness(0.58) saturate(1.05) contrast(1.05)",
         }}
       />
 
+      {/* Sector color cinematic overlay */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(135deg, rgba(10,13,20,0.9) 0%, rgba(10,13,20,0.65) 35%, rgba(${data.accentRgb}, 0.15) 70%, rgba(${data.accentRgb}, 0.25) 100%)`,
+          background: `linear-gradient(135deg, rgba(11,17,32,0.85) 0%, rgba(11,17,32,0.45) 35%, ${tint} 75%, rgba(11,17,32,0.65) 100%)`,
         }}
       />
 
+      {/* Vignette */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 30% 40%, rgba(${data.accentRgb}, 0.18) 0%, transparent 55%)`,
+          background:
+            "radial-gradient(ellipse at 30% 40%, transparent 25%, rgba(0,0,0,0.4) 100%)",
         }}
       />
 
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.15, 1], opacity: [0.35, 0.55, 0.35] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-1/4 top-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full"
-        style={{
-          background: `radial-gradient(circle, rgba(${data.accentRgb},0.20) 0%, transparent 60%)`,
-        }}
-      />
-
+      {/* Light grid */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
         }}
       />
 
@@ -72,23 +74,17 @@ export function SolutionHero({ data }: SolutionHeroProps) {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 backdrop-blur-md"
-          style={{
-            borderColor: `rgba(${data.accentRgb}, 0.4)`,
-            backgroundColor: `rgba(${data.accentRgb}, 0.08)`,
-            boxShadow: `0 0 32px rgba(${data.accentRgb}, 0.20)`,
-          }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl mb-6"
         >
           <span
             className="w-1.5 h-1.5 rounded-full animate-pulse"
             style={{
               backgroundColor: data.accent,
-              boxShadow: `0 0 8px ${data.accent}`,
+              boxShadow: `0 0 10px ${data.accent}`,
             }}
           />
           <span
-            className="terminal-font text-[11px] tracking-[0.25em] uppercase font-medium"
-            style={{ color: data.accent }}
+            className="terminal-font text-[11px] tracking-[0.25em] uppercase font-medium text-white"
           >
             {data.heroEyebrow}
           </span>
@@ -98,14 +94,14 @@ export function SolutionHero({ data }: SolutionHeroProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.05] max-w-4xl mb-6 drop-shadow-[0_4px_32px_rgba(0,0,0,0.85)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.05] max-w-4xl mb-6 drop-shadow-[0_4px_28px_rgba(0,0,0,0.5)]"
         >
           {data.heroHeadline}
           <br />
           <span
             className="bg-clip-text text-transparent"
             style={{
-              backgroundImage: `linear-gradient(135deg, ${data.accent} 0%, #F5F7FA 100%)`,
+              backgroundImage: `linear-gradient(135deg, ${data.accent} 0%, #FFFFFF 100%)`,
             }}
           >
             {data.heroHighlight}
@@ -116,7 +112,7 @@ export function SolutionHero({ data }: SolutionHeroProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-base sm:text-lg text-[#C7CDD8] max-w-2xl leading-relaxed mb-10"
+          className="text-base sm:text-lg text-white/90 max-w-2xl leading-relaxed mb-10 drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
         >
           {data.heroSubline}
         </motion.p>
@@ -129,12 +125,8 @@ export function SolutionHero({ data }: SolutionHeroProps) {
         >
           <a
             href="#forge"
-            className="group inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-all duration-200 hover:scale-[1.02]"
-            style={{
-              backgroundColor: data.accent,
-              color: "#0A0D14",
-              boxShadow: `0 0 40px rgba(${data.accentRgb}, 0.4), 0 8px 24px rgba(0,0,0,0.4)`,
-            }}
+            className="group inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-all duration-200 hover:scale-[1.02] text-white shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
+            style={{ backgroundColor: data.accent }}
           >
             {data.heroCTA}
             <ArrowRight
@@ -144,11 +136,7 @@ export function SolutionHero({ data }: SolutionHeroProps) {
           </a>
           <a
             href="#systems"
-            className="inline-flex items-center gap-2 rounded-lg border px-7 py-3.5 text-sm font-medium text-[#C7CDD8] hover:text-white transition-all duration-200 backdrop-blur-md"
-            style={{
-              borderColor: "rgba(255,255,255,0.15)",
-              backgroundColor: "rgba(10,13,20,0.4)",
-            }}
+            className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-7 py-3.5 text-sm font-medium text-white hover:bg-white/10 backdrop-blur-xl transition-all duration-200"
           >
             See the systems →
           </a>

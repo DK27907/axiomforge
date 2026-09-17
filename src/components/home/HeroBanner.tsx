@@ -7,7 +7,7 @@ import { TrustStrip } from "./TrustStrip";
 export function HeroBanner() {
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 py-20 overflow-hidden">
-      {/* Full-color datacenter image */}
+      {/* FULL-CLARITY image */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -15,40 +15,28 @@ export function HeroBanner() {
           backgroundImage: "url(/images/hero-datacenter.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.35,
-          filter: "saturate(1.4) contrast(1.15) brightness(0.9)",
+          opacity: 1,
+          filter: "brightness(0.62) saturate(0.95) contrast(1.05)",
         }}
       />
 
-      {/* Diagonal color wash */}
+      {/* Cinematic color wash */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(135deg, rgba(10,13,20,0.85) 0%, rgba(6,20,35,0.7) 30%, rgba(6,182,212,0.15) 60%, rgba(37,99,235,0.20) 100%)",
+            "linear-gradient(135deg, rgba(11,17,32,0.72) 0%, rgba(15,23,42,0.55) 40%, rgba(14,116,144,0.35) 75%, rgba(30,64,175,0.45) 100%)",
         }}
       />
 
-      {/* Radial spotlight */}
+      {/* Vignette */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 40%, rgba(6,182,212,0.15) 0%, transparent 50%)",
-        }}
-      />
-
-      {/* Animated pulse glow */}
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(6,182,212,0.12) 0%, rgba(37,99,235,0.06) 30%, transparent 65%)",
+            "radial-gradient(ellipse at center, transparent 30%, rgba(11,17,32,0.35) 100%)",
         }}
       />
 
@@ -58,9 +46,9 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center gap-3 px-4 py-2 rounded-full border border-[#00F5A0]/30 bg-[#0A0D14]/60 backdrop-blur-md terminal-font text-xs tracking-widest text-[#00F5A0] uppercase shadow-[0_0_24px_rgba(0,245,160,0.15)]"
+          className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl terminal-font text-xs tracking-widest text-white uppercase"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00F5A0] shadow-[0_0_8px_rgba(0,245,160,0.9)] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] shadow-[0_0_12px_rgba(52,211,153,0.9)] animate-pulse" />
           ODPC Registered · Nairobi · Since 2024
         </motion.div>
 
@@ -68,11 +56,11 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center leading-[1.05] max-w-5xl drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center leading-[1.05] max-w-5xl text-white drop-shadow-[0_4px_28px_rgba(0,0,0,0.55)]"
         >
-          <span className="text-white">Autonomous AI Systems.</span>
+          <span>Autonomous AI Systems.</span>
           <br />
-          <span className="bg-gradient-to-r from-[#00F5A0] via-[#06B6D4] to-[#2563EB] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#6EE7B7] via-[#67E8F9] to-[#93C5FD] bg-clip-text text-transparent">
             Forged for Your Exact Infrastructure.
           </span>
         </motion.h1>
@@ -81,13 +69,13 @@ export function HeroBanner() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="text-base sm:text-lg text-[#C7CDD8] max-w-2xl text-center leading-relaxed"
+          className="text-base sm:text-lg text-white/90 max-w-2xl text-center leading-relaxed drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
         >
           No sales loops. No legacy bloat. We engineer custom, isolated AI
           agents and contextual chatbots built natively for{" "}
-          <span className="text-[#00F5A0] font-medium">Kenyan healthcare compliance</span>,{" "}
-          <span className="text-[#4F8FFF] font-medium">academic scale</span>, and{" "}
-          <span className="text-[#06B6D4] font-medium">enterprise efficiency</span>.
+          <span className="text-[#6EE7B7] font-semibold">Kenyan healthcare compliance</span>,{" "}
+          <span className="text-[#93C5FD] font-semibold">academic scale</span>, and{" "}
+          <span className="text-[#67E8F9] font-semibold">enterprise efficiency</span>.
         </motion.p>
 
         <motion.div
@@ -102,12 +90,13 @@ export function HeroBanner() {
         <TrustStrip />
       </div>
 
+      {/* Bottom fade — very short, dark only. Next section handles transition */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
         style={{
           background:
-            "linear-gradient(to bottom, transparent, rgba(10,13,20,0.5), #0A0D14)",
+            "linear-gradient(to bottom, transparent, rgba(11,17,32,0.6))",
         }}
       />
     </section>

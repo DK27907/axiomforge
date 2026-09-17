@@ -4,8 +4,8 @@ export interface SectorConfig {
   key: Sector;
   label: string;
   shortLabel: string;
-  accent: string;         // hex
-  accentRgb: string;      // for rgba shadows
+  accent: string;
+  accentRgb: string;
   placeholder: string;
   maskLogs: string[];
   headerLine: string;
@@ -16,8 +16,8 @@ export const SECTORS: Record<Sector, SectorConfig> = {
     key: "healthcare",
     label: "Hospital Data",
     shortLabel: "HEALTHCARE",
-    accent: "#00F5A0",
-    accentRgb: "0,245,160",
+    accent: "#047857",
+    accentRgb: "4,120,87",
     placeholder:
       "Patient Wanjiru, 34F, presented with fever and joint pain at 14:32 EAT...",
     headerLine: "MEDICAL TRIAGE AGENT · ISOLATED CONTAINER · KE-MED-7A3",
@@ -32,8 +32,8 @@ export const SECTORS: Record<Sector, SectorConfig> = {
     key: "education",
     label: "School Syllabus",
     shortLabel: "EDUCATION",
-    accent: "#2563EB",
-    accentRgb: "37,99,235",
+    accent: "#1E40AF",
+    accentRgb: "30,64,175",
     placeholder:
       "Does CS301 require a prerequisite in Discrete Mathematics before enrollment?",
     headerLine: "ACADEMIC REGISTRAR AGENT · SYLLABUS-LOCKED · KE-EDU-2201",
@@ -48,8 +48,8 @@ export const SECTORS: Record<Sector, SectorConfig> = {
     key: "enterprise",
     label: "Business CRM",
     shortLabel: "ENTERPRISE",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
     placeholder:
       "Pull last quarter deals above KES 2M with stalled progression and no activity in 14 days.",
     headerLine: "OPERATIONS AGENT · API-CONNECTED · KE-OPS-1188",
@@ -65,12 +65,9 @@ export const SECTORS: Record<Sector, SectorConfig> = {
 export interface SimulatedLine {
   type: "input" | "progress" | "success" | "info" | "result" | "blank";
   text: string;
-  delay: number;  // ms before this line appears
+  delay: number;
 }
 
-/**
- * Build the full scripted response for a given query + sector.
- */
 export function buildSimulation(
   sector: Sector,
   userQuery: string
@@ -78,18 +75,15 @@ export function buildSimulation(
   const cfg = SECTORS[sector];
   const lines: SimulatedLine[] = [];
 
-  // 1. Echo the input
   lines.push({ type: "input", text: `> INPUT: "${userQuery}"`, delay: 200 });
   lines.push({ type: "blank", text: "", delay: 200 });
 
-  // 2. Mask logs (progress)
   cfg.maskLogs.forEach((log, i) => {
     lines.push({ type: "progress", text: log, delay: 500 + i * 350 });
   });
 
   lines.push({ type: "blank", text: "", delay: 300 });
 
-  // 3. Sector-specific results
   if (sector === "healthcare") {
     lines.push({
       type: "success",
@@ -176,9 +170,6 @@ export function buildSimulation(
   return lines;
 }
 
-/**
- * Get a default suggested query per sector for the "try this" hint.
- */
 export function getSuggestedQuery(sector: Sector): string {
   return SECTORS[sector].placeholder;
 }

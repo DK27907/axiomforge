@@ -29,15 +29,10 @@ export function EmailCaptureForm() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          source: "homepage-hero",
-        }),
+        body: JSON.stringify({ email, source: "homepage-hero" }),
       });
 
-      if (!res.ok) {
-        throw new Error("Submission failed");
-      }
+      if (!res.ok) throw new Error("Submission failed");
 
       setState("success");
       setMessage("Received. We'll be in touch within 6 hours.");
@@ -57,12 +52,12 @@ export function EmailCaptureForm() {
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto">
       <div
-        className={`group relative flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0 rounded-xl border bg-[#0F131C]/60 backdrop-blur-sm transition-all duration-300 ${
+        className={`group relative flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0 rounded-xl border bg-white transition-all duration-300 shadow-md ${
           state === "error"
-            ? "border-[#FF3366] shadow-[0_0_32px_rgba(255,51,102,0.15)]"
+            ? "border-[#DC2626] shadow-[0_8px_32px_rgba(220,38,38,0.15)]"
             : state === "success"
-              ? "border-[#00F5A0] shadow-[0_0_32px_rgba(0,245,160,0.15)]"
-              : "border-[#1F2533] focus-within:border-[#06B6D4]/60 focus-within:shadow-[0_0_40px_rgba(6,182,212,0.12)]"
+              ? "border-[#00A86B] shadow-[0_8px_32px_rgba(0,168,107,0.15)]"
+              : "border-slate-200 focus-within:border-[#0891B2]/60 focus-within:shadow-[0_8px_32px_rgba(8,145,178,0.15)]"
         }`}
       >
         <input
@@ -71,13 +66,13 @@ export function EmailCaptureForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="institutional-email@yourorg.co.ke"
           disabled={state === "loading" || state === "success"}
-          className="flex-1 bg-transparent px-5 py-4 text-[15px] text-[#F5F7FA] placeholder:text-[#4B5468] outline-none disabled:opacity-60"
+          className="flex-1 bg-transparent px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 outline-none disabled:opacity-60"
         />
 
         <button
           type="submit"
           disabled={state === "loading" || state === "success"}
-          className="group/btn relative flex items-center justify-center gap-2 m-1.5 rounded-lg bg-[#F5F7FA] px-6 py-3 text-sm font-medium text-[#0A0D14] transition-all duration-200 hover:bg-white disabled:opacity-80 disabled:cursor-not-allowed"
+          className="group/btn relative flex items-center justify-center gap-2 m-1.5 rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-slate-800 disabled:opacity-80 disabled:cursor-not-allowed"
         >
           <AnimatePresence mode="wait" initial={false}>
             {state === "loading" ? (
@@ -129,10 +124,10 @@ export function EmailCaptureForm() {
             exit={{ opacity: 0, y: -6 }}
             className={`flex items-center justify-center gap-2 mt-3 text-xs terminal-font tracking-wide ${
               state === "error"
-                ? "text-[#FF3366]"
+                ? "text-[#DC2626]"
                 : state === "success"
-                  ? "text-[#00F5A0]"
-                  : "text-[#8B94A7]"
+                  ? "text-[#00A86B]"
+                  : "text-slate-500"
             }`}
           >
             {state === "error" && <AlertCircle size={12} />}
@@ -141,7 +136,7 @@ export function EmailCaptureForm() {
         )}
       </AnimatePresence>
 
-      <div className="terminal-font text-[10px] tracking-widest uppercase text-[#4B5468] text-center mt-4">
+      <div className="terminal-font text-[10px] tracking-widest uppercase text-slate-400 text-center mt-4">
         No sales call. No commitment. Immediate sandbox access.
       </div>
     </form>

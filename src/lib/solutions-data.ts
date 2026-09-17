@@ -5,37 +5,31 @@ export interface SolutionData {
   accent: string;
   accentRgb: string;
 
-  // Hero
   heroEyebrow: string;
   heroHeadline: string;
   heroHighlight: string;
   heroSubline: string;
   heroCTA: string;
 
-  // Before / After
   beforeLabel: string;
   beforeProblems: string[];
   afterLabel: string;
   afterWins: string[];
 
-  // Systems showcase (3 cards)
   systems: {
     title: string;
     tagline: string;
     description: string;
   }[];
 
-  // Metrics
   metrics: {
     label: string;
     value: string;
     caption: string;
   }[];
 
-  // Trust badges
   trust: string[];
 
-  // Final CTA
   ctaHeadline: string;
   ctaSubline: string;
   ctaButton: string;
@@ -44,8 +38,8 @@ export interface SolutionData {
 export const SOLUTIONS: Record<SectorKey, SolutionData> = {
   healthcare: {
     key: "healthcare",
-    accent: "#00F5A0",
-    accentRgb: "0,245,160",
+    accent: "#047857",
+    accentRgb: "4,120,87",
 
     heroEyebrow: "◢ Healthcare Command",
     heroHeadline: "HIPAA & ODPC Compliant Healthcare AI.",
@@ -110,8 +104,8 @@ export const SOLUTIONS: Record<SectorKey, SolutionData> = {
 
   education: {
     key: "education",
-    accent: "#2563EB",
-    accentRgb: "37,99,235",
+    accent: "#1E40AF",
+    accentRgb: "30,64,175",
 
     heroEyebrow: "◢ Academic Scale",
     heroHeadline: "FERPA-Aligned Campus Infrastructure.",
@@ -176,8 +170,8 @@ export const SOLUTIONS: Record<SectorKey, SolutionData> = {
 
   enterprise: {
     key: "enterprise",
-    accent: "#06B6D4",
-    accentRgb: "6,182,212",
+    accent: "#0E7490",
+    accentRgb: "14,116,144",
 
     heroEyebrow: "◢ Enterprise Engine",
     heroHeadline: "Eliminate System Friction.",

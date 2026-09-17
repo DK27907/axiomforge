@@ -1,62 +1,50 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════════════
-   AXIOMFORGE — THE COMMAND CANVAS
-   Matte-black premium design system
-   Tailwind 4 CSS-based configuration
-   ═══════════════════════════════════════════════════════════════ */
-
 @theme {
-  /* ── The Matte-Black Foundation ── */
-  --color-void: #0A0D14;
-  --color-surface: #0F131C;
-  --color-elevated: #161B26;
-  --color-axiom-border: #1F2533;
-  --color-axiom-grid: #141922;
+  /* ── Studio Slate Canvas ── */
+  --color-void: #EAEEF3;
+  --color-surface: #FFFFFF;
+  --color-elevated: #F5F7FA;
+  --color-axiom-border: #DCE3EB;
+  --color-axiom-grid: #E1E7EF;
 
-  /* ── Text Hierarchy ── */
-  --color-text-primary: #F5F7FA;
-  --color-text-secondary: #8B94A7;
-  --color-text-tertiary: #4B5468;
+  /* ── Deep Text Hierarchy ── */
+  --color-text-primary: #0B1120;
+  --color-text-secondary: #334155;
+  --color-text-tertiary: #64748B;
 
-  /* ── Sector Accents (The Neon Borders) ── */
-  --color-medical: #00F5A0;
-  --color-academic: #2563EB;
-  --color-ops: #06B6D4;
-  --color-critical: #FF3366;
+  /* ── Deep Sector Accents ── */
+  --color-medical: #047857;
+  --color-academic: #1E40AF;
+  --color-ops: #0E7490;
+  --color-critical: #DC2626;
 
-  /* ── Shadcn Overrides (Dark Mode Default) ── */
-  --color-background: #0A0D14;
-  --color-foreground: #F5F7FA;
-  --color-card: #0F131C;
-  --color-card-foreground: #F5F7FA;
-  --color-popover: #0F131C;
-  --color-popover-foreground: #F5F7FA;
-  --color-primary: #06B6D4;
-  --color-primary-foreground: #0A0D14;
-  --color-secondary: #161B26;
-  --color-secondary-foreground: #F5F7FA;
-  --color-muted: #161B26;
-  --color-muted-foreground: #8B94A7;
-  --color-accent: #1F2533;
-  --color-accent-foreground: #F5F7FA;
-  --color-destructive: #FF3366;
-  --color-destructive-foreground: #F5F7FA;
-  --color-border: #1F2533;
-  --color-input: #1F2533;
-  --color-ring: #06B6D4;
+  /* ── Shadcn Tokens ── */
+  --color-background: #EAEEF3;
+  --color-foreground: #0B1120;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0B1120;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #0B1120;
+  --color-primary: #0E7490;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F5F7FA;
+  --color-secondary-foreground: #0B1120;
+  --color-muted: #F5F7FA;
+  --color-muted-foreground: #64748B;
+  --color-accent: #E1E7EF;
+  --color-accent-foreground: #0B1120;
+  --color-destructive: #DC2626;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #DCE3EB;
+  --color-input: #DCE3EB;
+  --color-ring: #0E7490;
 
-  /* ── Typography ── */
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-jetbrains), "Fira Code", ui-monospace, monospace;
 
-  /* ── Radii ── */
-  --radius: 0.625rem;
+  --radius: 0.875rem;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   BASE LAYER — Global resets and defaults
-   ═══════════════════════════════════════════════════════════════ */
 
 @layer base {
   * {
@@ -66,7 +54,7 @@
   html {
     scroll-behavior: smooth;
     background-color: var(--color-void);
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -79,86 +67,77 @@
   }
 
   ::selection {
-    background-color: rgba(6, 182, 212, 0.3);
-    color: #F5F7FA;
+    background-color: rgba(14, 116, 144, 0.22);
+    color: #0B1120;
   }
 
-  /* Premium dark scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0A0D14;
+    background: #E1E7EF;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1F2533;
-    border-radius: 4px;
+    background: #B8C4D1;
+    border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2A3242;
+    background: #94A3B8;
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   COMPONENT UTILITIES — Reusable AxiomForge patterns
-   ═══════════════════════════════════════════════════════════════ */
-
 @layer components {
-  /* The Signature Grid Overlay */
   .axiom-grid-bg {
     background-image:
       linear-gradient(var(--color-axiom-grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--color-axiom-grid) 1px, transparent 1px);
-    background-size: 48px 48px;
+    background-size: 64px 64px;
   }
 
-  /* Terminal / Monospace */
   .terminal-font {
     font-family: var(--font-mono);
     font-feature-settings: "liga" 0, "calt" 0;
   }
 
-  /* Sector accent text colors */
   .accent-medical { color: var(--color-medical); }
   .accent-academic { color: var(--color-academic); }
   .accent-ops { color: var(--color-ops); }
 
-  /* Neon glow borders — Healthcare */
-  .glow-medical {
-    border: 1px solid var(--color-medical);
+  /* Frosted glass panel — content over images */
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     box-shadow:
-      0 0 24px rgba(0, 245, 160, 0.15),
-      0 0 2px rgba(0, 245, 160, 0.4) inset;
+      0 1px 2px rgba(11, 17, 32, 0.04),
+      0 8px 24px rgba(11, 17, 32, 0.06),
+      0 24px 64px rgba(11, 17, 32, 0.06);
   }
 
-  /* Neon glow borders — Education */
-  .glow-academic {
-    border: 1px solid var(--color-academic);
-    box-shadow:
-      0 0 24px rgba(37, 99, 235, 0.15),
-      0 0 2px rgba(37, 99, 235, 0.4) inset;
-  }
-
-  /* Neon glow borders — Enterprise */
-  .glow-ops {
-    border: 1px solid var(--color-ops);
-    box-shadow:
-      0 0 24px rgba(6, 182, 212, 0.15),
-      0 0 2px rgba(6, 182, 212, 0.4) inset;
-  }
-
-  /* The Bento Card base */
+  /* Premium bento card */
   .bento-card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-axiom-border);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
+    background-color: #FFFFFF;
+    border: 1px solid #DCE3EB;
+    border-radius: 1rem;
+    padding: 1.75rem;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+      0 1px 2px rgba(11, 17, 32, 0.04),
+      0 4px 12px rgba(11, 17, 32, 0.04);
   }
 
   .bento-card:hover {
-    border-color: #2A3242;
-    transform: translateY(-2px);
+    border-color: #B8C4D1;
+    transform: translateY(-3px);
+    box-shadow:
+      0 2px 4px rgba(11, 17, 32, 0.05),
+      0 16px 40px rgba(11, 17, 32, 0.09);
   }
+
+  /* Sector ring borders */
+  .ring-medical { border: 1px solid rgba(4, 120, 87, 0.25); }
+  .ring-academic { border: 1px solid rgba(30, 64, 175, 0.25); }
+  .ring-ops { border: 1px solid rgba(14, 116, 144, 0.25); }
 }

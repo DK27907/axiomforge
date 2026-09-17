@@ -50,7 +50,7 @@ export function SectorInfoPanel({ data }: SectorInfoPanelProps) {
   const systems = SECTOR_SYSTEMS[data.key] ?? [];
 
   return (
-    <section className="relative py-16 px-6">
+    <section className="relative py-16 px-6 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -65,7 +65,7 @@ export function SectorInfoPanel({ data }: SectorInfoPanelProps) {
           >
             ◢ Every System We Build
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#F5F7FA]">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">
             Six Production Systems. One Isolated Container.
           </h2>
         </motion.div>
@@ -80,7 +80,7 @@ export function SectorInfoPanel({ data }: SectorInfoPanelProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="rounded-xl border border-[#1F2533] bg-[#0F131C]/60 p-4 hover:border-[#2A3242] transition-colors"
+                className="rounded-xl border border-slate-200 bg-white p-4 hover:border-slate-300 hover:shadow-md transition-all shadow-sm"
               >
                 <div
                   className="w-8 h-8 rounded-md flex items-center justify-center mb-3"
@@ -91,10 +91,10 @@ export function SectorInfoPanel({ data }: SectorInfoPanelProps) {
                 >
                   <Icon size={14} style={{ color: data.accent }} />
                 </div>
-                <div className="text-[12px] font-semibold text-[#F5F7FA] leading-tight mb-1.5">
+                <div className="text-[12px] font-semibold text-slate-900 leading-tight mb-1.5">
                   {sys.label}
                 </div>
-                <div className="text-[10px] text-[#8B94A7] leading-snug">
+                <div className="text-[10px] text-slate-500 leading-snug">
                   {sys.detail}
                 </div>
               </motion.div>
