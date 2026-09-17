@@ -5,9 +5,9 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
-  # Skip Netlify's secret scanner for build cache — Turbopack stores inlined
-  # env vars in .next/cache, which triggers false-positive failures.
-  SECRETS_SCAN_OMIT_PATHS = ".next/cache/**"
+  # Turbopack inlines env vars into its persistent cache. Exclude both the
+  # standard .next/cache and Netlify's restored .netlify/.next/cache.
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/.next/cache/**,.next/cache/**,.netlify/**,.next/**"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
